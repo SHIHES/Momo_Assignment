@@ -3,4 +3,5 @@
     <string name="internet_not_connected">您尚未連接 Internet</string>
     <string name="unexpected_error">意料之外的錯誤</string>
     <string name="no_rest_day_info">無休館資訊</string>
+    <string name="animal_title">動物資料</string>
 </resources>

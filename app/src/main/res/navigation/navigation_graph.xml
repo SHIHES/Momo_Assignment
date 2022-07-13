@@ -7,7 +7,17 @@
     <fragment
         android:id="@+id/buildingFragment"
         android:name="com.example.android.momo_assignment.ui.building.BuildingFragment"
-        android:label="BuildingFragment" />
+        android:label="BuildingFragment" >
+        <action
+            android:id="@+id/action_buildingFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+
+        <argument
+            android:name="building"
+            app:argType="com.example.android.momo_assignment.logic.model.building.Building"
+            app:nullable="false" />
+
+    </fragment>
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.example.android.momo_assignment.ui.detail.DetailFragment"
@@ -15,5 +25,9 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.android.momo_assignment.ui.home.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_buildingFragment"
+            app:destination="@id/buildingFragment" />
+    </fragment>
 </navigation>

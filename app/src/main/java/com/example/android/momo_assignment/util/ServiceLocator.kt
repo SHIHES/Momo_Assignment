@@ -2,25 +2,27 @@ package com.example.android.momo_assignment.util
 
 import androidx.annotation.VisibleForTesting
 import com.example.android.momo_assignment.logic.network.DefaultRepository
-import com.example.android.momo_assignment.logic.network.ZooDataSource
+import com.example.android.momo_assignment.logic.network.DataSource
+import com.example.android.momo_assignment.logic.network.ZooLocalDataSource
 import com.example.android.momo_assignment.logic.network.ZooRemoteDataSource
 
 object ServiceLocator {
     
     @Volatile
-    var repository:ZooDataSource? = null
+    var repository: DataSource? = null
     @VisibleForTesting set
     
-    fun provideTasksRepository(): ZooDataSource {
+    fun provideTasksRepository(): DataSource {
         synchronized(this) {
             return repository
                 ?: createRepository()
         }
     }
     
-    private fun createRepository(): ZooDataSource {
+    private fun createRepository(): DataSource {
         return DefaultRepository(
-            ZooRemoteDataSource
+            ZooRemoteDataSource,
+            ZooLocalDataSource
         )
     }
 }

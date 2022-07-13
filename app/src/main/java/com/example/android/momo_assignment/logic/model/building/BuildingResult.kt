@@ -1,4 +1,4 @@
-package com.example.android.momo_assignment.logic.model
+package com.example.android.momo_assignment.logic.model.building
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

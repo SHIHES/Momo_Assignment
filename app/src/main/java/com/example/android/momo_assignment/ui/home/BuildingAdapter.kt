@@ -8,8 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.android.momo_assignment.R
 import com.example.android.momo_assignment.databinding.ItemBuildingBinding
-import com.example.android.momo_assignment.logic.model.Building
-import com.squareup.moshi.internal.Util
+import com.example.android.momo_assignment.logic.model.building.Building
 
 class BuildingAdapter (
     private val onClickListener: OnClickListener
@@ -37,8 +36,8 @@ class BuildingAdapter (
         }
     }
     
-    class OnClickListener(val clickListener: (position: Int) -> Unit){
-        fun onClick(position: Int) = clickListener(position)
+    class OnClickListener(val clickListener: (building: Building) -> Unit){
+        fun onClick(building: Building) = clickListener(building)
     }
     
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BuildingVH {
@@ -49,7 +48,7 @@ class BuildingAdapter (
         val building = getItem(position)
         holder.bind(building = building)
         holder.itemView.setOnClickListener {
-            onClickListener.onClick(position = position)
+            onClickListener.onClick(building)
         }
     }
     

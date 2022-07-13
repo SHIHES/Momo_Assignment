@@ -5,16 +5,17 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.android.momo_assignment.R
-import com.example.android.momo_assignment.logic.model.BuildingResult
+import com.example.android.momo_assignment.logic.model.building.Building
+import com.example.android.momo_assignment.logic.model.building.BuildingResult
 import com.example.android.momo_assignment.logic.model.LoadApiStatus
-import com.example.android.momo_assignment.logic.model.NetworkResult
-import com.example.android.momo_assignment.logic.network.ZooDataSource
+import com.example.android.momo_assignment.logic.model.DataResult
+import com.example.android.momo_assignment.logic.network.DataSource
 import com.example.android.momo_assignment.util.Logger
 import com.example.android.momo_assignment.util.Util
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
-    private val repository: ZooDataSource
+    private val repository: DataSource
 ) : ViewModel() {
     
     private val coroutineScope = viewModelScope
@@ -34,6 +35,11 @@ class HomeViewModel(
     val buildingResult: LiveData<BuildingResult>
         get() = _buildingData
     
+    private val _navigateToDetail = MutableLiveData<Building>()
+    
+    val navigateToDetail: LiveData<Building>
+        get() = _navigateToDetail
+    
     
     init {
         getBuildingData()
@@ -48,20 +54,20 @@ class HomeViewModel(
             val result = repository.getAllBuildingInformation()
             
             _buildingData.value = when(result) {
-                is NetworkResult.Success -> {
+                is DataResult.Success -> {
                     _error.value = null
                     _status.value = LoadApiStatus.DONE
                     Logger.d("result data${result.data}")
                     result.data
                     
                 }
-                is NetworkResult.Fail -> {
+                is DataResult.Fail -> {
                     _error.value = result.error
                     _status.value = LoadApiStatus.ERROR
                     Logger.d("result error${result.error}")
                     null
                 }
-                is NetworkResult.Error -> {
+                is DataResult.Error -> {
                     _error.value = result.exception.toString()
                     _status.value = LoadApiStatus.ERROR
                     Logger.d("result exception${result.exception}")
@@ -74,5 +80,13 @@ class HomeViewModel(
                 }
             }
         }
+    }
+    
+    fun navigateToDetail(building: Building){
+        _navigateToDetail.value = building
+    }
+    
+    fun navigateEnd(){
+        _navigateToDetail.value = null
     }
 }

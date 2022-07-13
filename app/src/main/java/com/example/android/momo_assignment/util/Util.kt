@@ -2,6 +2,7 @@ package com.example.android.momo_assignment.util
 
 import android.content.Context
 import android.net.ConnectivityManager
+import java.io.IOException
 
 object Util {
     
@@ -14,5 +15,18 @@ object Util {
     
     fun getString(resourceId: Int): String {
         return CustomApplication.instance.getString(resourceId)
+    }
+    
+    fun getJsonDataFromAsset(fileName: String): String? {
+        val jsonString: String
+        try {
+            jsonString = CustomApplication.instance.applicationContext.assets.open(fileName).bufferedReader().use {
+                it.readText()
+            }
+        } catch (e:IOException) {
+            e.printStackTrace()
+            return null
+        }
+        return jsonString
     }
 }

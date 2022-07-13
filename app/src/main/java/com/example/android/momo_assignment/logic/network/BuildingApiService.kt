@@ -1,6 +1,6 @@
 package com.example.android.momo_assignment.logic.network
 
-import com.example.android.momo_assignment.logic.model.BuildingResult
+import com.example.android.momo_assignment.logic.model.building.BuildingResult
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

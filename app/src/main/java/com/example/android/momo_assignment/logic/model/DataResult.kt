@@ -1,11 +1,11 @@
 package com.example.android.momo_assignment.logic.model
 
-sealed class NetworkResult<out R> {
+sealed class DataResult<out R> {
     
-    data class Success<out T>(val data: T) : NetworkResult<T>()
-    data class Fail(val error: String) : NetworkResult<Nothing>()
-    data class Error(val exception: Exception) : NetworkResult<Nothing>()
-    object Loading : NetworkResult<Nothing>()
+    data class Success<out T>(val data: T) : DataResult<T>()
+    data class Fail(val error: String) : DataResult<Nothing>()
+    data class Error(val exception: Exception) : DataResult<Nothing>()
+    object Loading : DataResult<Nothing>()
     
     override fun toString(): String {
         return when (this){
