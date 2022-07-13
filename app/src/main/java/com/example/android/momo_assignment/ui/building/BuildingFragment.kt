@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.example.android.momo_assignment.MainActivity
 import com.example.android.momo_assignment.R
 import com.example.android.momo_assignment.databinding.FragmentBuildingBinding
 import com.example.android.momo_assignment.ext.getVmFactory
@@ -39,6 +40,7 @@ class BuildingFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         
         setView()
+        (requireActivity() as MainActivity).setupToolbarTitle(arg.building.e_name)
         
         viewModel.filterAnimalResult.observe(viewLifecycleOwner){
             it?.let {

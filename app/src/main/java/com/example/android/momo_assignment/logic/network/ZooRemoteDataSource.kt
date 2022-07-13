@@ -15,10 +15,8 @@ object ZooRemoteDataSource : DataSource {
         
         return try {
             val callback = BuildingApi.retrofitServiceBuilding.getAllBuildingInformation()
-            Logger.d("[${this::class.simpleName}] getAllBuildingInformation callback=${callback}")
             DataResult.Success(callback)
         } catch (e: Exception) {
-            Logger.d("[${this::class.simpleName}] getAllBuildingInformation exception=${e.message}")
             DataResult.Error(e)
         }
     }

@@ -57,20 +57,17 @@ class HomeViewModel(
                 is DataResult.Success -> {
                     _error.value = null
                     _status.value = LoadApiStatus.DONE
-                    Logger.d("result data${result.data}")
                     result.data
                     
                 }
                 is DataResult.Fail -> {
                     _error.value = result.error
                     _status.value = LoadApiStatus.ERROR
-                    Logger.d("result error${result.error}")
                     null
                 }
                 is DataResult.Error -> {
                     _error.value = result.exception.toString()
                     _status.value = LoadApiStatus.ERROR
-                    Logger.d("result exception${result.exception}")
                     null
                 }
                 else -> {

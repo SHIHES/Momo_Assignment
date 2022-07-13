@@ -22,12 +22,9 @@ object ZooLocalDataSource : DataSource {
     
         return try {
             val jsonFileString = Util.getJsonDataFromAsset("animalInfo.json")
-            Logger.d("jsonFileString $jsonFileString")
         
             val gson = GsonBuilder().create()
-        
             val obj = gson.fromJson(jsonFileString, AnimalResult::class.java)
-            Logger.d("obj $obj")
         
             DataResult.Success(obj)
         

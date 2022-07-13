@@ -8,6 +8,7 @@ import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.example.android.momo_assignment.MainActivity
 import com.example.android.momo_assignment.databinding.FragmentDetailBinding
 
 class DetailFragment : Fragment() {
@@ -25,6 +26,8 @@ class DetailFragment : Fragment() {
         binding = FragmentDetailBinding.inflate(inflater, container, false)
         
         setView()
+    
+        (requireActivity() as MainActivity).setupToolbarTitle(args.animal.name)
         
         return binding.root
     }
