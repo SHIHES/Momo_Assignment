@@ -7,7 +7,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
-private const val BASE_URL = "https://data.taipei/api/v1/dataset/5a0e5fbb-72f8-41c6-908e-2fb25eff9b8a?scope=resourceAquire"
+private const val BASE_URL = "https://data.taipei/api/v1/dataset/"
 
 private val client = OkHttpClient.Builder()
     .addInterceptor(
@@ -25,7 +25,7 @@ private val retrofit = Retrofit.Builder()
 
 interface BuildingApiService {
     
-    @GET
+    @GET("5a0e5fbb-72f8-41c6-908e-2fb25eff9b8a?scope=resourceAquire")
     suspend fun getAllBuildingInformation() : BuildingResult
 }
 

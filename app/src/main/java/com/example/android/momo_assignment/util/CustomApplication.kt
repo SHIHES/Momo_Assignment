@@ -7,7 +7,7 @@ import kotlin.properties.Delegates
 class CustomApplication : Application() {
     
     val zooRepository: ZooDataSource
-        get() = ServiceLocator().provideTasksRepository()
+        get() = ServiceLocator.provideTasksRepository()
     
     companion object {
         var instance: CustomApplication by Delegates.notNull()

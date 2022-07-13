@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/navigation_graph">
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/homeFragment">
 
+    <fragment
+        android:id="@+id/buildingFragment"
+        android:name="com.example.android.momo_assignment.ui.building.BuildingFragment"
+        android:label="BuildingFragment" />
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.android.momo_assignment.ui.detail.DetailFragment"
+        android:label="DetailFragment" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.android.momo_assignment.ui.home.HomeFragment"
+        android:label="HomeFragment" />
 </navigation>

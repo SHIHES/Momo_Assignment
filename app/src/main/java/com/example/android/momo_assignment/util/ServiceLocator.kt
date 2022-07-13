@@ -5,7 +5,7 @@ import com.example.android.momo_assignment.logic.network.DefaultRepository
 import com.example.android.momo_assignment.logic.network.ZooDataSource
 import com.example.android.momo_assignment.logic.network.ZooRemoteDataSource
 
-class ServiceLocator {
+object ServiceLocator {
     
     @Volatile
     var repository:ZooDataSource? = null
@@ -20,7 +20,7 @@ class ServiceLocator {
     
     private fun createRepository(): ZooDataSource {
         return DefaultRepository(
-            ZooRemoteDataSource()
+            ZooRemoteDataSource
         )
     }
 }

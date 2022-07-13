@@ -6,11 +6,12 @@ import com.example.android.momo_assignment.logic.network.ZooDataSource
 import com.example.android.momo_assignment.ui.home.HomeViewModel
 import java.lang.IllegalArgumentException
 
+@Suppress("UNCHECKED_CAST")
 class ViewModelFactory(
     private val repository: ZooDataSource
 ) : ViewModelProvider.NewInstanceFactory() {
     
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T =
         with(modelClass) {
             when {
                 isAssignableFrom(HomeViewModel::class.java) ->
@@ -19,7 +20,6 @@ class ViewModelFactory(
                 else ->
                     throw  IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
             }
-        }
-        return super.create(modelClass)
-    }
+        
+    } as T
 }
