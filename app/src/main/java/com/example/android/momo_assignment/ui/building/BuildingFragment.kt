@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -31,7 +32,7 @@ class BuildingFragment : Fragment() {
         
         val recyclerView = binding.fragmentBuildingAnimalRv
         val adapter = AnimalAdapter(AnimalAdapter.OnClickListener{
-        
+            viewModel.navigateToDetail(it)
         })
         
         recyclerView.adapter = adapter
@@ -42,6 +43,14 @@ class BuildingFragment : Fragment() {
         viewModel.filterAnimalResult.observe(viewLifecycleOwner){
             it?.let {
                 adapter.submitList(it)
+            }
+        }
+        
+        viewModel.navigateToDetail.observe(viewLifecycleOwner) {
+            it?.let {
+                
+                findNavController().navigate(BuildingFragmentDirections.actionBuildingFragmentToDetailFragment(it))
+                viewModel.navigateEnd()
             }
         }
         

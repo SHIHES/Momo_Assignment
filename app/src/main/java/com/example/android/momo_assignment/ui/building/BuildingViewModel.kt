@@ -36,6 +36,11 @@ class BuildingViewModel(
     val filterAnimalResult: LiveData<List<Animal>>
         get() =  _filterAnimalResult
     
+    private val _navigateToDetail = MutableLiveData<Animal>()
+    
+    val navigateToDetail: LiveData<Animal>
+        get() = _navigateToDetail
+    
     init {
         getAnimalData()
     }
@@ -76,6 +81,13 @@ class BuildingViewModel(
         }
     }
     
+    fun navigateToDetail(animal: Animal){
+        _navigateToDetail.value = animal
+    }
+    
+    fun navigateEnd(){
+        _navigateToDetail.value = null
+    }
     
     
     

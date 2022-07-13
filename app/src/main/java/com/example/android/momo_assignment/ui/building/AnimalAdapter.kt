@@ -6,10 +6,8 @@ import androidx.core.net.toUri
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.android.momo_assignment.R
 import com.example.android.momo_assignment.databinding.ItemBuildingBinding
 import com.example.android.momo_assignment.logic.model.animal.Animal
-import com.example.android.momo_assignment.logic.model.building.Building
 
 class AnimalAdapter(
     private val onClickListener: OnClickListener
@@ -24,8 +22,8 @@ class AnimalAdapter(
             val uri = url.toUri().buildUpon().scheme("https").build()
             
             Glide.with(itemView.context).load(uri).centerCrop().into(binding.itemBuildingImage)
-            binding.itemBuildingTitle.text = animal.A_Name_Ch
-            binding.itemBuildingContent.text = animal.A_Feature
+            binding.itemBuildingTitle.text = animal.name
+            binding.itemBuildingContent.text = animal.A_Habitat
             
             
         }
